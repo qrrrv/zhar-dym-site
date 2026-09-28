@@ -1,0 +1,11 @@
+{
+  "name": "shashlychnaya",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.0.0",
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --bind 0.0.0.0",
+    "build": "rm -rf dist && mkdir -p dist && cp index.html styles.css script.js logo.svg manus-routes.json dist/ && mkdir -p dist/assets && cp assets/hero-grill.png dist/assets/hero-grill.png 2>/dev/null || true",
+    "check": "node -e \"const fs=require('fs'); const m=JSON.parse(fs.readFileSync('public/manus-routes.json')); if(!m.routes?.length||m.routes[0].path!=='/') process.exit(1); for(const f of ['index.html','styles.css','script.js','logo.svg']) if(!fs.existsSync(f)) process.exit(1); console.log('Project checks passed')\""
+  }
+}
